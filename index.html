@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplu de Site Web</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            margin: 20px 0;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #333;
+            text-decoration: none;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .main-content {
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bine ați venit pe Site-ul Meu</h1>
+    </header>
+    
+    <nav>
+        <a href="#">Acasă</a>
+        <a href="#">Despre</a>
+        <a href="#">Contact</a>
+    </nav>
+    <a href="./downloads/407.html" target="_blank"> click </a>
+    <style>
+        #controls {
+            margin-top: 20px;
+        }
+        #playback-slider {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Audio</h1>
+    <button onclick="playAudio()">Începe</button>
+    <button onclick="pauseAudio()">Pauză</button>
+    <button onclick="stopAudio()">Stop</button>
+
+    <audio id="audio" src="./dzhon-kramer-pila--igra-tol-ko-nachalas.mp3" preload="auto"></audio>
+
+    <div id="controls">
+        <input type="range" id="playback-slider" min="0" value="0" step="0.1">
+    </div>
+
+    <script>
+        var audio = document.getElementById('audio');
+        var slider = document.getElementById('playback-slider');
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function pauseAudio() {
+            audio.pause();
+        }
+
+        function stopAudio() {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        // Обновление ползунка в процессе воспроизведения
+        audio.addEventListener('timeupdate', function() {
+            var value = (audio.currentTime / audio.duration) * 100;
+            slider.value = value;
+        });
+
+        // Изменение текущего времени при перемещении ползунка
+        slider.addEventListener('input', function() {
+            var value = slider.value;
+            audio.currentTime = (value / 100) * audio.duration;
+        });
+    </script>
+
+
+    <div class="container">
+        <div class="main-content">
+            <h2>Despre Noi</h2>
+            <p>Acesta este un site web de exemplu creat pentru a demonstra structura de bază a unui document HTML.</p>
+            <p>Am inclus câteva elemente de bază, cum ar fi titluri, paragrafe, imagini și liste.</p>
+
+            <h3>Imagini</h3>
+            <img src="https://via.placeholder.com/400" alt="Exemplu Imagine" style="width: 100%; max-width: 400px; border-radius: 8px;">
+            <h3>Lista de Servicii</h3>
+            <ul>
+                <li>Consultanță</li>
+                <li>Dezvoltare Web</li>
+                <li>Design Grafic</li>
+                <li>Marketing Digital</li>
+            </ul>
+    
+            <h3>Contact</h3>
+            
+        </div>
+    </div>
+    <a href="./downloads/index1.html" target="_blank"> Cwest </a>
+    
+       
+  
+      
+</body> 
+   </html> 
+     
+            
