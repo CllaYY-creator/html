@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+    <html lang="en">
+<head> <link rel="stylesheet" href="./cwest.css">
+<title> 3etap_cwest</title>
+</head>
+<body background="../img/game.jpg"> 
+    <h1 class="hop">Audio</h1>
+    <button class="w" onclick="playAudio()">Începe</button>
+    <button class="e" onclick="pauseAudio()">Pauză</button>
+    <button class="r"  onclick="stopAudio()">Stop</button>
+
+    <audio id="audio" src="./dzhon-kramer-pila-mysli-o-smerti.mp3" preload="auto"></audio>
+
+    <div id="controls">
+        <input class="u" type="range" id="playback-slider" min="0" value="0" step="0.1">
+    </div>
+
+    <script>
+        var audio = document.getElementById('audio');
+        var slider = document.getElementById('playback-slider');
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function pauseAudio() {
+            audio.pause();
+        }
+
+        function stopAudio() {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        // Обновление ползунка в процессе воспроизведения
+        audio.addEventListener('timeupdate', function() {
+            var value = (audio.currentTime / audio.duration) * 100;
+            slider.value = value;
+        });
+
+        // Изменение текущего времени при перемещении ползунка
+        slider.addEventListener('input', function() {
+            var value = slider.value;
+            audio.currentTime = (value / 100) * audio.duration;
+        });
+    </script>
+
+
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #333;
+        color: white;
+    }
+    #timer {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: white;
+    }
+    #status {
+        font-size: 24px;
+        margin-top: 20px;
+        color: yellow;
+    }
+    #button-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 80vw;
+        max-width: 600px;
+    }
+    .button {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: lightgray;
+        border: 1px solid #333;
+        margin: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        user-select: none;
+        color: black;
+        pointer-events: none; /* Кнопки недоступны до старта игры */
+    }
+    .button.clicked {
+        background-color: lightgreen;
+        pointer-events: none; /* Нажатые кнопки не могут быть нажаты повторно */
+    }
+    #start-button {
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #555;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 32%;
+    }
+    #start-button:hover {
+        background-color: #777;
+    }
+</style>
+</head>
+<body>
+<button id="start-button">Старт</button>
+<div id="timer">10</div>
+<div id="button-container"></div>
+<div id="status"></div>
+
+<script>
+    const totalButtons = 12;
+    let timeLeft = 10;
+    let timer;
+    let currentNumber = 1;
+    let clickedButtons = 0;
+    const timerDisplay = document.getElementById('timer');
+    const statusDisplay = document.getElementById('status');
+    const buttonContainer = document.getElementById('button-container');
+    const startButton = document.getElementById('start-button');
+
+    // Функция для перемешивания массива
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    // Функция для создания кнопок
+    function createButtons() {
+        buttonContainer.innerHTML = '';
+        const numbers = Array.from({ length: totalButtons }, (_, i) => i + 1);
+        shuffleArray(numbers); // Перемешиваем номера кнопок
+
+        numbers.forEach(num => {
+            const button = document.createElement('div');
+            button.className = 'button';
+            button.textContent = num;
+            button.dataset.number = num;
+            button.addEventListener('click', () => handleButtonClick(button));
+            buttonContainer.appendChild(button);
+        });
+    }
+
+    // Обработчик клика по кнопке
+    function handleButtonClick(button) {
+        const number = parseInt(button.dataset.number, 10);
+        if (number === currentNumber) {
+            button.classList.add('clicked');
+            clickedButtons++;
+            currentNumber++;
+            if (clickedButtons === totalButtons) {
+                clearInterval(timer);
+                statusDisplay.textContent = 'Вы выиграли!';
+                setTimeout(() => openWinningPage(), 2000); // Открываем новую вкладку через 2 секунды
+            }
+        }
+    }
+
+    // Функция для запуска таймера
+    function startTimer() {
+        timer = setInterval(() => {
+            timeLeft--;
+            timerDisplay.textContent = timeLeft;
+            timerDisplay.style.color = timeLeft > 0 ? 'white' : 'red';
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                statusDisplay.textContent = 'Время вышло!';
+                setTimeout(() => window.location.reload(), 2000); // Обновляем страницу через 2 секунды
+            }
+        }, 1000);
+    }
+
+    // Функция для открытия новой вкладки при выигрыше
+    function openWinningPage() {
+        // Замените URL на желаемый
+        window.open('./4etap_cwest.html','_blank'); 
+    }
+
+    // Функция для старта игры
+    function startGame() {
+        timeLeft = 10;
+        currentNumber = 1;
+        clickedButtons = 0;
+        timerDisplay.textContent = timeLeft;
+        timerDisplay.style.color = 'white';
+        statusDisplay.textContent = '';
+        createButtons();
+        startTimer();
+        // Разблокируем кнопки
+        document.querySelectorAll('.button').forEach(button => {
+            button.style.pointerEvents = 'auto';
+        });
+        startButton.style.display = 'none'; // Прячем кнопку старта после начала игры
+    }
+
+    // Добавляем обработчик клика для кнопки Старт
+    startButton.addEventListener('click', startGame);
+</script>
+<p class="lm"> 2)-0</p>
+</body>

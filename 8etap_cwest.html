@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="./cwest.css">
+    <title>8etap_cwest.html</title>
+   
+    
+    
+   
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #f0f0f0;
+                font-family: Arial, sans-serif;
+            }
+            .lock-container {
+                position: relative;
+                width: 300px;
+                height: 400px;
+            }
+            .lock-body {
+                position: absolute;
+                width: 160px;
+                height: 250px;
+                background-color: #333;
+                border-radius: 20px 20px 10px 10px;
+                margin: 0 auto;
+                top: 80px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .lock-body::before {
+                content: "";
+                position: absolute;
+                width: 120px;
+                height: 120px;
+                background-color: #666;
+                border-radius: 50%;
+                top: -60px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .lock-keyhole {
+                position: absolute;
+                width: 80px;
+                height: 40px;
+                background-color: #000;
+                border-radius: 0 0 40px 40px;
+                top: 130px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .code-input {
+                position: absolute;
+                width: 140px;
+                height: 40px;
+                border: none;
+                border-radius: 5px;
+                font-size: 18px;
+                text-align: center;
+                top: 180px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="lock-container">
+            <div class="lock-body">
+                <div class="lock-keyhole"></div>
+                <input type="text" id="codeInput" class="code-input" placeholder="Введите код">
+            </div>
+        </div>
+        <script>
+            document.getElementById('codeInput').addEventListener('input', function() {
+                const correctCode = '5428'; // Замените на ваш правильный код
+                const userInput = this.value;
+    
+                if (userInput === correctCode) {
+                    // Открыть новое окно при вводе правильного кода
+                    window.open('./9etap_cwest.html', '_blank'); // Замените URL на нужный вам
+                    // Очистить поле ввода после открытия окна
+                    this.value = '';
+                }
+            });
+        </script>
+    </body>
+    </html>
+    

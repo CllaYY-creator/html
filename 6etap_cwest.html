@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кнопки</title>
+    <style>
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .button {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            font-size: 24px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .button span {
+            color: #40e0d0; /* Бирюзовый цвет для цифр */
+        }
+        .correct {
+            background-color: green;
+        }
+        .incorrect {
+            background-color: red;
+        }
+    </style>
+</head>
+<body background="../img/black-black.jpg">
+    <!-- Создаём 20 кнопок с цифрами -->
+    <button class="button" data-index="0"> <span>1</span> </button>
+    <button class="button" data-index="1"> <span>2</span> </button>
+    <button class="button" data-index="2"> <span>3</span> </button>
+    <button class="button" data-index="3"> <span>4</span> </button>
+    <button class="button" data-index="4"> <span>5</span> </button>
+    <button class="button" data-index="5"> <span>6</span> </button>
+    <button class="button" data-index="6"> <span>7</span> </button>
+    <button class="button" data-index="7"> <span>8</span> </button>
+    <button class="button" data-index="8"> <span>9</span> </button>
+    <button class="button" data-index="9"> <span>10</span> </button>
+    <button class="button" data-index="10"> <span>11</span> </button>
+    <button class="button" data-index="11"> <span>12</span> </button>
+    <button class="button" data-index="12"> <span>13</span> </button>
+    <button class="button" data-index="13"> <span>14</span> </button>
+    <button class="button" data-index="14"> <span>15</span> </button>
+    <button class="button" data-index="15"> <span>16</span> </button>
+    <button class="button" data-index="16"> <span>17</span> </button>
+    <button class="button" data-index="17"> <span>18</span> </button>
+    <button class="button" data-index="18"> <span>19</span> </button>
+    <button class="button" data-index="19"> <span>20</span> </button>
+
+    <script>
+        // Получаем все кнопки
+        const buttons = document.querySelectorAll('.button');
+
+        // Задаём URL для открытия в новой вкладке
+        const urls = {
+            0: './kn1_cwest.html', // URL для кнопки 1
+            7: './kn2_cwest.html', // URL для кнопки 8
+            10: './kn3_cwest.html', // URL для кнопки 11
+            11: './7etap_cwest.html', // URL для кнопки 12
+            19: './kn4_cwest.html'  // URL для кнопки 20
+        };
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Сначала сбрасываем все кнопки на исходный цвет
+                buttons.forEach(btn => btn.classList.remove('correct', 'incorrect'));
+
+                // Определяем индекс кнопки
+                const index = this.dataset.index;
+
+                // Проверяем, должен ли URL открыться
+                if (urls.hasOwnProperty(index)) {
+                    this.classList.add('correct');
+                    window.open(urls[index], '_blank'); // Открываем новую вкладку
+                } else {
+                    this.classList.add('incorrect');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

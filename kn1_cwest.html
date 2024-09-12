@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrisoare</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 300px;
+            height: 300px; /* Увеличена высота контейнера для размещения сообщения */
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, #e0e0e0, #ffffff);
+            z-index: -1;
+        }
+        .message {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-height: 200px; /* Ограничение высоты сообщения */
+            overflow-y: auto; /* Полоса прокрутки по вертикали */
+        }
+        .show-message {
+            cursor: pointer;
+            color: #007bff;
+            text-decoration: underline;
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body background="../img/pngtree.jpg">
+    <div class="container">
+        <h1>Scrisoare</h1>
+        <p class="show-message" onclick="toggleMessage()">Apasă aici, pentru a deschide mesajul.</p>
+        <div class="message" id="message">
+<p>Dacă ai găsit această scrisoare, probabil eu deja sunt omorît, dar ca să supravețuești, ți-am lăsat un șir de numere dintre care numai o cifră e intrusul și anume acest intrus este cifra care îți trebuie. Dacă totuși la școală am vorbit despre cosmetică, atunci această cifră este PRIME în codul care îl vei avea mai peurmă. Iată șirul: {2, 4, 5, 6, 8, 10}</p>            <!-- Добавьте больше текста, если необходимо -->
+        </div>
+    </div>
+
+    <script>
+        function toggleMessage() {
+            var message = document.getElementById('message');
+            if (message.style.display === 'none' || message.style.display === '') {
+                message.style.display = 'block';
+            } else {
+                message.style.display = 'none';
+            }
+        }
+    </script>
+    <div  class="form-container">
+        <h1 class="ii">Care este prima literă din alfabet?
+
+        </h1>
+        <form id="searchForm">
+            <input type="text" id="answer" placeholder="Введите ответ" required>
+            <button type="submit">Поиск</button>
+            <p class="error-message" id="error-message"></p>
+        </form>
+    </div>
+
+    <script>
+        // Правильный ответ
+        const correctAnswer = "A";
+
+        // Получение элементов
+        const form = document.getElementById('searchForm');
+        const answerInput = document.getElementById('answer');
+        const errorMessage = document.getElementById('error-message');
+
+        // Обработка отправки формы
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Предотвращаем отправку формы
+
+            // Получение введенного значения
+            const userAnswer = answerInput.value.trim();
+
+            // Проверка правильности ответа
+            if (userAnswer === correctAnswer) {
+                // Переход на следующую страницу
+               
+                
+                window.open ('./kn1.1_cwest.html', '_blank');
+
+
+            } else {
+                // Показ сообщения об ошибке
+                errorMessage.textContent = 'Неправильный ответ. Пожалуйста, попробуйте еще раз.'; 
+            }
+        });
+    </script>
+</body>
+</html>

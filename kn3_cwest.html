@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="./cwest.css">
+    <title>kn3_cwest.html</title>
+    
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .image-container {
+            display: flex;
+            gap: 10px;
+        }
+        .image-box {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #ccc;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .image-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body background="../img/angels-demons.jpg">
+    <div class="image-container">
+        <div class="image-box">
+            <img src="../img/barca.jpg" alt="Изображение 1">
+        </div>
+        <div class="image-box">
+            <img src="../img/rață.jpg" alt="Изображение 2">
+        </div>
+        <div class="image-box">
+            <img src="../img/frunza.jpg" alt="Изображение 3">
+        </div>
+    </div>
+    <p class="nb"> Что общего между этими картинками?</p>
+    
+    <div  class="form-container">
+        
+        <form id="searchForm">
+            
+            <input class="msd" type="text" id="answer" placeholder="Введите ответ" required>
+            <button class="mss" type="submit">Поиск</button>
+            
+            <p class="error-message" id="error-message"></p>
+        </form>
+    </div>
+
+    <script>
+        // Правильный ответ
+        const correctAnswer = "plutesc";
+
+        // Получение элементов
+        const form = document.getElementById('searchForm');
+        const answerInput = document.getElementById('answer');
+        const errorMessage = document.getElementById('error-message');
+
+        // Обработка отправки формы
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Предотвращаем отправку формы
+
+            // Получение введенного значения
+            const userAnswer = answerInput.value.trim();
+
+            // Проверка правильности ответа
+            if (userAnswer === correctAnswer) {
+                // Переход на следующую страницу
+               
+                
+                window.open ('./kn3.3_cwest.html', '_blank');
+
+
+            } else {
+                // Показ сообщения об ошибке
+                errorMessage.textContent = 'Неправильный ответ. Пожалуйста, попробуйте еще раз.'; 
+            }
+        });
+    </script>
+</body>
+</html>

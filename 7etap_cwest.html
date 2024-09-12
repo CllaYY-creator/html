@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7etap_cwest.html</title>
+    <style>
+        .container {
+            text-align: center; /* Центрирование всего содержимого */
+            margin-top: 20px; /* Отступ сверху */
+        }
+        .th {
+            width: 50%; /* Уменьшение ширины изображения в 2 раза */
+            height: auto; /* Автоматическая высота для сохранения пропорций */
+        }
+        .caption {
+            margin-top: 10px; /* Отступ между изображением и текстом */
+            font-size: 16px; /* Размер шрифта */
+            color: #333; /* Цвет текста */
+        }
+        
+       
+            /* Простые стили для формы */
+            .form-container {
+                margin: 50px;
+            }
+            .error-message {
+                color: red;
+            }
+       
+    </style>
+</head>
+<body background="../img/gray.jpg">
+    <div class="container">
+        <img src="../img/photo_5294133893898820484_y.jpg" alt="Изображение 1" class="th">
+        <div class="caption">Биазбука морозе</div>
+    </div>
+    <div  class="form-container">
+        <h1 class="ii">Введите код
+
+        </h1>
+        <form id="searchForm">
+            <input type="text" id="answer" placeholder="Введите ответ" required>
+            <button type="submit">Поиск</button>
+            <p class="error-message" id="error-message"></p>
+        </form>
+    </div>
+
+    <script>
+        // Правильный ответ
+        const correctAnswer = "ш";
+
+        // Получение элементов
+        const form = document.getElementById('searchForm');
+        const answerInput = document.getElementById('answer');
+        const errorMessage = document.getElementById('error-message');
+
+        // Обработка отправки формы
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Предотвращаем отправку формы
+
+            // Получение введенного значения
+            const userAnswer = answerInput.value.trim();
+
+            // Проверка правильности ответа
+            if (userAnswer === correctAnswer) {
+                // Переход на следующую страницу
+               
+                
+                window.open ('./8etap_cwest.html', '_blank');
+
+
+            } else {
+                // Показ сообщения об ошибке
+                errorMessage.textContent = 'Неправильный ответ. Пожалуйста, попробуйте еще раз.'; 
+            }
+        });
+    </script>
+</body>
+</html>

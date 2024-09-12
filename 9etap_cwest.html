@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="./cwest.css">
+    <title>9etap_cwest.html</title>
+    <body background="../img/trc.jpg">
+       
+       
+            <style>
+                /* Общие стили для тела страницы */
+                body {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                    margin: 0;
+                    font-family: Arial, sans-serif;
+                    background-color: #f0f0f0;
+                }
+        
+                /* Контейнер для кнопок */
+                .button-container {
+                    text-align: center;
+                }
+        
+                /* Стили для кнопок */
+                button {
+                    background-color: #4CAF50; /* Зеленый цвет фона */
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 10px;
+                    cursor: pointer;
+                    border-radius: 5px; /* Скругленные углы */
+                    transition: background-color 0.3s; /* Плавный переход фона при наведении */
+                }
+        
+                /* Стили кнопки при наведении */
+                button:hover {
+                    background-color: #45a049;
+                }
+        
+                /* Стили кнопки при нажатии */
+                button:active {
+                    background-color: #388e3c;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="button-container">
+                <button onclick="window.open('../index.html', '_blank');">Кнопка 1</button>
+                <button onclick="window.open('../index.html', '_blank');">Кнопка 2</button>
+            </div>
+            
+            
+                <style>
+                    /* Общие стили для тела страницы */
+                    body {
+                        margin: 0;
+                        font-family: Arial, sans-serif;
+                        background-color: #f0f0f0;
+                    }
+            
+                    /* Стили контейнера аудио плеера */
+                    .audio-container {
+                        position: fixed;
+                        top: 20px; /* Отступ от верхнего края */
+                        right: 20px; /* Отступ от правого края */
+                        background-color: white;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        padding: 10px;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для контейнера */
+                        z-index: 1000; /* Обеспечиваем, что контейнер будет выше остальных элементов */
+                    }
+            
+                    /* Стили для кнопок */
+                    button {
+                        background-color: #4CAF50; /* Зеленый цвет фона */
+                        border: none;
+                        color: white;
+                        padding: 8px 16px;
+                        text-align: center;
+                        text-decoration: none;
+                        display: inline-block;
+                        font-size: 14px;
+                        margin: 5px;
+                        cursor: pointer;
+                        border-radius: 5px; /* Скругленные углы */
+                        transition: background-color 0.3s; /* Плавный переход фона при наведении */
+                    }
+            
+                    /* Стили кнопки при наведении */
+                    button:hover {
+                        background-color: #45a049;
+                    }
+            
+                    /* Стили кнопки при нажатии */
+                    button:active {
+                        background-color: #388e3c;
+                    }
+            
+                    /* Стили аудио плеера */
+                    audio {
+                        width: 100%;
+                        max-width: 300px; /* Уменьшена максимальная ширина для плеера */
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="audio-container">
+                    <audio controls>
+                        <source src="./Pila_3_-_Troj_(mp3.mn).mp3" type="audio/mpeg">
+                        Ваш браузер не поддерживает элемент <code>audio</code>.
+                    </audio>
+                    <br>
+                    <button onclick="document.querySelector('audio').play();">Воспроизвести</button>
+                    <button onclick="document.querySelector('audio').pause();">Пауза</button>
+                    <button onclick="document.querySelector('audio').currentTime = 0;">Перемотка в начало</button>
+                </div>
+                <a class="nba" href="./10etap_cwest.html" target="_blank"> .</a>
+                
+              
+                
+                    <style>
+                        body {
+                            margin: 0;
+                            padding: 0;
+                            overflow: hidden; /* чтобы не было полос прокрутки */
+                        }
+                        .audio-button-wrapper {
+                            position: fixed;
+                            top: 10px;
+                            left: 10px;
+                            background: #fff;
+                            border: 2px solid #000;
+                            border-radius: 5px;
+                            padding: 10px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 10px;
+                        }
+                        .audio-button-wrapper button {
+                            background-color: #4CAF50;
+                            border: none;
+                            color: white;
+                            padding: 10px 15px;
+                            text-align: center;
+                            text-decoration: none;
+                            display: inline-block;
+                            font-size: 16px;
+                            margin: 4px 2px;
+                            cursor: pointer;
+                            border-radius: 5px;
+                        }
+                        .audio-button-wrapper button:hover {
+                            background-color: #45a049;
+                        }
+                        .audio-button-wrapper button.pause {
+                            background-color: #f44336;
+                        }
+                        .audio-button-wrapper button.pause:hover {
+                            background-color: #e53935;
+                        }
+                        .audio-button-wrapper button.restart {
+                            background-color: #2196F3;
+                        }
+                        .audio-button-wrapper button.restart:hover {
+                            background-color: #1976D2;
+                        }
+                        .audio-slider {
+                            width: 100%;
+                        }
+                        .time-display {
+                            display: flex;
+                            justify-content: space-between;
+                            font-size: 14px;
+                            padding: 0 5px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="audio-button-wrapper">
+                        <button onclick="playAudio()">Воспроизвести</button>
+                        <button class="pause" onclick="pauseAudio()">Пауза</button>
+                        <button class="restart" onclick="restartAudio()">Перемотка в начало</button>
+                        <input type="range" id="audio-slider" class="audio-slider" value="0" step="0.1" min="0">
+                        <div class="time-display">
+                            <span id="current-time">0:00</span>
+                            <span id="duration">0:00</span>
+                        </div>
+                        <audio id="audio" src="./Charlie_Clouser_-_Theme_OST_Pila_66392820.mp3"></audio>
+                    </div>
+                
+                    <script>
+                        const audio = document.getElementById('audio');
+                        const slider = document.getElementById('audio-slider');
+                        const currentTimeDisplay = document.getElementById('current-time');
+                        const durationDisplay = document.getElementById('duration');
+                
+                        function playAudio() {
+                            audio.play();
+                        }
+                
+                        function pauseAudio() {
+                            audio.pause();
+                        }
+                
+                        function restartAudio() {
+                            audio.currentTime = 0;
+                            audio.play();
+                        }
+                
+                        audio.addEventListener('loadedmetadata', () => {
+                            slider.max = audio.duration;
+                            updateDurationDisplay();
+                        });
+                
+                        audio.addEventListener('timeupdate', () => {
+                            slider.value = audio.currentTime;
+                            updateCurrentTimeDisplay();
+                        });
+                
+                        slider.addEventListener('input', () => {
+                            audio.currentTime = slider.value;
+                        });
+                
+                        function updateCurrentTimeDisplay() {
+                            const minutes = Math.floor(audio.currentTime / 60);
+                            const seconds = Math.floor(audio.currentTime % 60);
+                            currentTimeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                        }
+                
+                        function updateDurationDisplay() {
+                            const minutes = Math.floor(audio.duration / 60);
+                            const seconds = Math.floor(audio.duration % 60);
+                            durationDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                        }
+                    </script>
+                </body>
+                </html>
+                
+                
+
+            </body>
+
+            </html>
+            
+         
+        
+
+
+
+    

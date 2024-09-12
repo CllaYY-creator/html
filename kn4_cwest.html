@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="./cwest.css">
+    <title>kn4_cwest.html</title>
+    
+        <style>
+            .container {
+                display: flex;
+                align-items: center;
+            }
+            .container img {
+                margin-right: 30px; /* Увеличенный отступ между изображением и текстом */
+                max-width: 450px; /* Увеличенная максимальная ширина изображения */
+                height: auto; /* Автоматическая высота для сохранения пропорций */
+            }
+            .container .text {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+        </style>
+    </head>
+    <body background="../img/soric.jpg">
+        <div class="container">
+            <img src="../img/mar.jpg" alt="Пример изображения">
+            <div class="text">
+                <p class="lan">Formează cuvinte și scriele.</p>
+            </div>
+        </div>
+        <div  class="form-container">
+           
+            <form id="searchForm">
+                <input type="text" id="answer" placeholder="Введите ответ" required>
+                <button type="submit">Поиск</button>
+                <p class="error-message" id="error-message"></p>
+            </form>
+        </div>
+    
+        <script>
+            // Правильный ответ
+            const correctAnswer = "яблоко лопата машина корона";
+    
+            // Получение элементов
+            const form = document.getElementById('searchForm');
+            const answerInput = document.getElementById('answer');
+            const errorMessage = document.getElementById('error-message');
+    
+            // Обработка отправки формы
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Предотвращаем отправку формы
+    
+                // Получение введенного значения
+                const userAnswer = answerInput.value.trim();
+    
+                // Проверка правильности ответа
+                if (userAnswer === correctAnswer) {
+                    // Переход на следующую страницу
+                   
+                    
+                    window.open ('./kn4.4_cwest.html', '_blank');
+
+    
+                } else {
+                    // Показ сообщения об ошибке
+                    errorMessage.textContent = 'Неправильный ответ. Пожалуйста, попробуйте еще раз.'; 
+                }
+            });
+        </script>
+    </body>
+    </html>
+    
